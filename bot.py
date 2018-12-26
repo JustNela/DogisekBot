@@ -118,25 +118,19 @@ async def on_message(message):
             await client.add_reaction(dmmessage, reaction1)
             await client.add_reaction(dmmessage, reaction2)
             await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
-        if message.content.upper() == ">KICK":
+        if message.content.upper() == ">WARN":
             if "506569887716737024" in (role.id for role in message.author.roles):
 		
-                channel = message.channel
-                channel = discord.utils.get(client.get_all_channels(), name='logs')
-                embed = discord.Embed(title = "Kick", color = 0xFF4500)
-                embed.add_field(name = "Moderator", value = "{0}".format(message.author), inline=False)
-                embed.add_field(name = "User", value= "{0}".format(message.author), inline=False)
-                embed.add_field(name = "Duvod",value={0}.format(message), inline=Falae)
-
-                if user.server_permissions.kick_members:
-                    await client.send_message(message.channel, '**On/Ona je admin/Moderátor a nemuzu ji/ho Kicknout!**')
-                    return
+                channel = discord.utils.get(client.get_all_channels(), name='warny-od-botu')
     
-                try:
-                    await client.kick(user)
-                    await client.send_message(channel, embed=embed)
-                    await client.delete_message(message)
-
+    
+                embed = discord.Embed(color = 0xB22222, title = "Člověk Varován")
+                embed.add_field(name = "Člověk Varován", value = "{0}".format(userName), inline=False)
+                embed.add_field(name = "Moderator", value = "{0}".format(message.author), inline=False)
+                embed.add_field(name = "Důvod", value = "{0}".format(message), inline=False)
+ 
+                await client.send_message(channel, embed=embed)
+   
                
      
         if message.content.upper() == ">SERVER INFO":
@@ -178,5 +172,5 @@ async def on_message(message):
                   embed.timestamp = datetime.datetime.utcnow()
                   await client.send_message(message.channel, embed=embed)
 		
-        
+
 client.run(os.getenv("BOT"))
