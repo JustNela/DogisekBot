@@ -90,7 +90,7 @@ async def on_reaction_add(reaction, user):
                   index += 1
               await client.delete_message(msg)
 
-@client.event()
+@client.event
 async def on_message(message):
 	
 	
@@ -100,7 +100,7 @@ async def on_message(message):
             embed.add_field(name="Pro lepší pomoc kontaktuj:",value="@JustNela#6666",inline=True)
             embed.set_thumbnail(url = user.avatar_url)
             embed.set_footer(text = "Na žádost {}".format(message.author), icon_url=user.avatar_url)
-            await client.send_message(channel, embed=embed)
+            await client.send_message(message.channel, embed=embed)
         if message.content.upper() == ">HELP":
         
     
@@ -116,7 +116,7 @@ async def on_message(message):
       
             await client.add_reaction(dmmessage, reaction1)
             await client.add_reaction(dmmessage, reaction2)
-            await client.send_message(channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
+            await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
         
         if message.content.upper() == ">SERVER INFO":
       
@@ -155,7 +155,7 @@ async def on_message(message):
                   embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
                   embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
                   embed.timestamp = datetime.datetime.utcnow()
-                  await client.send_message(channel, embed=embed)
+                  await client.send_message(message.channel, embed=embed)
 		
         
 client.run(os.getenv("BOT"))
