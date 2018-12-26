@@ -160,15 +160,15 @@ async def on_message(message):
                   await client.send_message(message.channel, embed=embed)
 		
 	if message.content.upper() == ">CAT":
-          colour = '0x' + '008000'
-          async with aiohttp.ClientSession() as session:
-              async with session.get("https://api.reddit.com/r/cat/random") as r:
-                  data = await r.json()
-                  embed = discord.Embed(title='Random Meme', description='z redditu', color=discord.Color(int(colour, base=16)))
-                  embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
-                  embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
-                  embed.timestamp = datetime.datetime.utcnow()
-                  await client.send_message(message.channel, embed=embed)
+           colour = '0x' + '008000'
+           async with aiohttp.ClientSession() as session:
+               async with session.get("https://api.reddit.com/r/cat/random") as r:
+                   data = await r.json()
+                   embed = discord.Embed(title='Random Meme', description='z redditu', color=discord.Color(int(colour, base=16)))
+                   embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
+                   embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
+                   embed.timestamp = datetime.datetime.utcnow()
+                   await client.send_message(message.channel, embed=embed)
 		
 @client.command(pass_context=True)
 async def warn(ctx):
