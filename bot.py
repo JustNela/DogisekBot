@@ -92,6 +92,9 @@ async def on_reaction_add(reaction, user):
 
 @client.event
 async def on_message(message):
+         user = message.author
+		channel = message.channel
+	
 	
 	
         if message.content.upper() == "DOGISEK BOT":
