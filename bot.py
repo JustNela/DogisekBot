@@ -99,8 +99,8 @@ async def on_message(message):
             embed = discord.Embed(title = "Zdásemi že potřebuješ radu!", color = 0x311B92)
             embed.add_field(name = "Prefix:",value=">",inline=True)
             embed.add_field(name="Pro lepší pomoc kontaktuj:",value="@JustNela#6666",inline=True)
-            embed.set_thumbnail(url = user.avatar_url)
-            embed.set_footer(text = "Na žádost {}".format(message.author), icon_url=user.avatar_url)
+            embed.set_thumbnail(url = message.author.avatar_url)
+            embed.set_footer(text = "Na žádost {}".format(message.author), icon_url=message.author.avatar_url)
             await client.send_message(message.channel, embed=embed)
         if message.content.upper() == ">HELP":
         
