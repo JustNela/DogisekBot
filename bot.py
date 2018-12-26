@@ -137,9 +137,7 @@ async def on_message(message):
                     await client.send_message(channel, embed=embed)
                     await client.delete_message(message)
 
-               except discord.Forbidden:
-               await client.send_message(message.channel, 'Permission denied.')
-               return
+               
      
         if message.content.upper() == ">SERVER INFO":
       
