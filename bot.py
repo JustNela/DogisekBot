@@ -118,21 +118,7 @@ async def on_message(message):
             await client.add_reaction(dmmessage, reaction1)
             await client.add_reaction(dmmessage, reaction2)
             await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
-        if message.content.upper() == ">WARN":
-            if "506569887716737024" in (role.id for role in message.author.roles):
-		
-                channel = discord.utils.get(client.get_all_channels(), name='warny-od-botu')
-    
-    
-                embed = discord.Embed(color = 0xB22222, title = "Člověk Varován")
-                embed.add_field(name = "Člověk Varován", value = "{0}".format(userName), inline=False)
-                embed.add_field(name = "Moderator", value = "{0}".format(message.author), inline=False)
-                embed.add_field(name = "Důvod", value = "{0}".format(message), inline=False)
- 
-                await client.send_message(channel, embed=embed)
-        else:
-             await client.send_message(message.channel, "Nemáš práva!")
-               
+        
      
         if message.content.upper() == ">SERVER INFO":
       
@@ -173,5 +159,18 @@ async def on_message(message):
                   embed.timestamp = datetime.datetime.utcnow()
                   await client.send_message(message.channel, embed=embed)
 		
-hahah
+@client.command(pass_context=True)
+async def warn(ctx):
+	channel = discord.utils.get(client.get_all_channels(), name='warny-od-botu')
+    
+    
+        embed = discord.Embed(color = 0xB22222, title = "Člověk Varován")
+        embed.add_field(name = "Člověk Varován", value = "{0}".format(userName), inline=False)
+        embed.add_field(name = "Moderator", value = "{0}".format(ctx.message.author), inline=False)
+        embed.add_field(name = "Důvod", value = "{0}".format(ctx.message), inline=False)
+ 
+        await client.send_message(channel, embed=embed)
+   else:
+        await client.send_message(message.channel, "Nemáš práva!")
+               
 client.run(os.getenv("BOT"))
