@@ -1,0 +1,7 @@
+discord.py
+pynacl==1.2.1
+asyncio
+status
+pip
+youtube_dl
+colorlog
