@@ -92,9 +92,7 @@ async def on_reaction_add(reaction, user):
 
 @client.event
 async def on_message(message):
-         user = message.author
-		channel = message.channel
-	
+         
 	
 	
         if message.content.upper() == "DOGISEK BOT":
@@ -113,14 +111,17 @@ async def on_message(message):
             embed.set_author(name='Potřebuješ pomoc?')
             embed.add_field(name = 'React 🇲 ',value ='Ukáže ti příkazy pro Moderátory!.',inline = False)
             embed.add_field(name = 'React 🇬 ',value ='Ukáže ti příkazy pro všechny.',inline = False)
-            dmmessage = await client.send_message(user, embed=embed)
+            dmmessage = await client.send_message(message.author, embed=embed)
             reaction1 = '🇲'
             reaction2 = '🇬'
       
             await client.add_reaction(dmmessage, reaction1)
             await client.add_reaction(dmmessage, reaction2)
             await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
-        
+      #  if message.content.upper() == ">HELP":
+          #  user = message.author
+           # channel = message.channel
+            
         if message.content.upper() == ">SERVER INFO":
       
           server = message.server
