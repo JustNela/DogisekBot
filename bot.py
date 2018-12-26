@@ -159,8 +159,8 @@ async def on_message(message):
                   embed.timestamp = datetime.datetime.utcnow()
                   await client.send_message(message.channel, embed=embed)
 		
-	
-	if message.content.upper() == ">CAT":
+       if message.content.upper() == ">CAT":
+         #if message.content.upper() == ">CAT":
             colour = '0x' + '008000'
             async with aiohttp.ClientSession() as session:
                 async with session.get("https://api.reddit.com/r/cat/random") as r:
