@@ -118,10 +118,29 @@ async def on_message(message):
             await client.add_reaction(dmmessage, reaction1)
             await client.add_reaction(dmmessage, reaction2)
             await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
-      #  if message.content.upper() == ">HELP":
-          #  user = message.author
-           # channel = message.channel
-            
+        if message.content.upper() == ">KICK":
+            if "506569887716737024" in (role.id for role in message.author.roles):
+		
+                channel = message.channel
+                channel = discord.utils.get(client.get_all_channels(), name='logs')
+                embed = discord.Embed(title = "Kick", color = 0xFF4500)
+                embed.add_field(name = "Moderator", value = "{0}".format(message.author), inline=False)
+                embed.add_field(name = "User", value= "{0}".format(message.author), inline=False)
+                embed.add_field(name = "Duvod",value={0}.format(message), inline=Falae)
+
+                if user.server_permissions.kick_members:
+                    await client.say('**On/Ona je admin/Moderátor a nemuzu ji/ho Kicknout!**')
+                    return
+    
+                try:
+                    await client.kick(user)
+                    await client.send_message(channel, embed=embed)
+                    await client.delete_message(message)
+
+               except discord.Forbidden:
+               await client.say('Permission denied.')
+               return
+     
         if message.content.upper() == ">SERVER INFO":
       
           server = message.server
