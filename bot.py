@@ -130,7 +130,8 @@ async def on_message(message):
                 embed.add_field(name = "Důvod", value = "{0}".format(message), inline=False)
  
                 await client.send_message(channel, embed=embed)
-   
+        else:
+             await client.send_message(message.channel, "Nemáš práva!")
                
      
         if message.content.upper() == ">SERVER INFO":
