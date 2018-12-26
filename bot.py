@@ -129,7 +129,7 @@ async def on_message(message):
                 embed.add_field(name = "Duvod",value={0}.format(message), inline=Falae)
 
                 if user.server_permissions.kick_members:
-                    await client.say('**On/Ona je admin/Moderátor a nemuzu ji/ho Kicknout!**')
+                    await client.send_message(message.channel, '**On/Ona je admin/Moderátor a nemuzu ji/ho Kicknout!**')
                     return
     
                 try:
@@ -138,7 +138,7 @@ async def on_message(message):
                     await client.delete_message(message)
 
                except discord.Forbidden:
-               await client.say('Permission denied.')
+               await client.send_message(message.channel, 'Permission denied.')
                return
      
         if message.content.upper() == ">SERVER INFO":
