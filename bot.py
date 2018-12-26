@@ -172,7 +172,5 @@ async def warn(ctx):
      embed.add_field(name = "Důvod", value = "{0}".format(ctx.message), inline=False)
  
      await client.send_message(channel, embed=embed)
-else:
-     await client.send_message(message.channel, "Nemáš práva!")
-               
+     
 client.run(os.getenv("BOT"))
