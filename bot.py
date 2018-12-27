@@ -161,7 +161,7 @@ async def on_message(message):
             embed.set_author(name='Jak dobre znas majitele?')
             embed.add_field(name = 'React 0⃣ ',value ='Pokud si myslíš že je majiteli 13.',inline = False)
             embed.add_field(name = 'React 1⃣ ',value ='Pokud si myslíš že je majiteli 10',inline=False)
-            embed.add_field(namr = 'React 2⃣', value = 'Pokud si myslíš že je majiteli 12',inline=False)
+            embed.add_field(name = 'React 2⃣', value = 'Pokud si myslíš že je majiteli 12',inline=False)
             embed.add_field(name = 'React 3⃣', value = 'Pokid si myslíš že je majiteli 11',inline=False)
             dmmessage = await client.send_message(message.author, embed=embed)
             reaction1 = '0⃣'
@@ -183,7 +183,16 @@ async def on_message(message):
                     embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
                     embed.timestamp = datetime.datetime.utcnow()
                     await client.send_message(message.channel, embed=embed)
-        if message.content.upper() == ">DOG":
+        if message.content.upper() == "TEST":
+            embed = diecord.Embed(title="Pokud si dostal reakce na message", description="tak se tesy povedl!", color=0x0FF0F0)
+            rea1='📠'
+            rea2='💾'
+            rea3='🆕'
+            await client.add_reaction(message, rea1)
+            await client.add_reaction(message, rea2)
+            await client.add_reaction(message, rea3)
+            await client.send_message(message.channel, embed=embed)
+	if message.content.upper() == ">DOG":
             colour = '0x' + '008000'
             async with aiohttp.ClientSession() as session:
                 async with session.get("https://api.reddit.com/r/dog/random") as r:
