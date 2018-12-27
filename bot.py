@@ -39,10 +39,10 @@ mod1.set_footer(text="Stránka 1")
 mod2=discord.Embed(title="Připravuje se!",description="--------------------",color=0xFF3D00)
 mod2.set_footer(text="Stránka 2")
 
-wrong1=diecord.Embed(title="Špatně!",description="Správná odpověď byla 3! (12)",color=0xF0F0F0)
-wrong2=diecord.Embed(title="Špatně!",description="Správná odpověď byla 3! (12)",color=0xF0F0F0)
-right3=diecord.Embed(title="Správně!",description="Majiteli je 12! (aspon tak píše v #ownerinfo xd)",color=0xF0F0F0)
-wrong4=diecord.Embed(title="Špatně!",description="Správná odpověď byla 3! (12)",color=0xF0F0F0)
+wrong1=discord.Embed(title="Špatně!",description="Správná odpověď byla 3! (12)",color=0xF0F0F0)
+wrong2=discord.Embed(title="Špatně!",description="Správná odpověď byla 3! (12)",color=0xF0F0F0)
+right3=discord.Embed(title="Správně!",description="Majiteli je 12! (aspon tak píše v #ownerinfo xd)",color=0xF0F0F0)
+wrong4=discord.Embed(title="Špatně!",description="Správná odpověď byla 3! (12)",color=0xF0F0F0)
 
 gen_cmd = (general1, general2)
   
