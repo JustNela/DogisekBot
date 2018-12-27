@@ -175,24 +175,24 @@ async def on_message(message):
             await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
         if message.content.upper() == ">CAT":
             colour = '0x' + '008000'
-              async with aiohttp.ClientSession() as session:
-                  async with session.get("https://api.reddit.com/r/cat/random") as r:
-                      data = await r.json()
-                      embed = discord.Embed(title='Random Kočučka 🐈', description='z redditu', color=discord.Color(int(colour, base=16)))
-                      embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
-                      embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
-                      embed.timestamp = datetime.datetime.utcnow()
-                      await client.send_message(message.channel, embed=embed)
+                async with aiohttp.ClientSession() as session:
+                    async with session.get("https://api.reddit.com/r/cat/random") as r:
+                        data = await r.json()
+                        embed = discord.Embed(title='Random Kočučka 🐈', description='z redditu', color=discord.Color(int(colour, base=16)))
+                        embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
+                        embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
+                        embed.timestamp = datetime.datetime.utcnow()
+                        await client.send_message(message.channel, embed=embed)
         if message.content.upper() == ">DOG":
             colour = '0x' + '008000'
-            async with aiohttp.ClientSession() as session:
-                async with session.get("https://api.reddit.com/r/dog/random") as r:
-                    data = await r.json()
-                    embed = discord.Embed(title='Random Pejsek 🐕', description='z redditu', color=discord.Color(int(colour, base=16)))
-                    embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
-                    embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
-                    embed.timestamp = datetime.datetime.utcnow()
-                    await client.send_message(message.channel, embed=embed)
+                async with aiohttp.ClientSession() as session:
+                    async with session.get("https://api.reddit.com/r/dog/random") as r:
+                        data = await r.json()
+                        embed = discord.Embed(title='Random Pejsek 🐕', description='z redditu', color=discord.Color(int(colour, base=16)))
+                        embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
+                        embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
+                        embed.timestamp = datetime.datetime.utcnow()
+                        await client.send_message(message.channel, embed=embed)
 		
      
         if message.content.upper() == ">SERVER INFO":
