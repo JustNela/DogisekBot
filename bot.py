@@ -206,7 +206,7 @@ async def kick(ctx,user:discord.Member):
     
 
     if user.server_permissions.kick_members:
-        await client.say('**On/Ona je mod/admin a nemuzu ho/ji vyhodit!**')
+        await client.send_message(message.channel, '**On/Ona je mod/admin a nemuzu ho/ji vyhodit!**')
         return
     
     try:
@@ -236,10 +236,10 @@ async def ban(ctx,user:discord.Member):
 
     except discord.Forbidden:
 
-        await client.say('Permission denied.')
+        await client.send_message(message.channel, 'Permission denied.')
         return
     except discord.HTTPException:
-        await client.say('ban se nepovedl :(.')
+        await client.send_message(message.channel, 'ban se nepovedl :(.')
         return	
     
 client.run(os.getenv("BOT"))
