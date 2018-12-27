@@ -71,7 +71,7 @@ async def on_ready():
 @client.event
 async def on_reaction_add(reaction, user):
   if reaction.message.server is None:
-      if reaction.emoji == '🇬':
+      if reaction.emoji == '🅰':
           index = 0
           while True:
               msg = await client.send_message(user, embed=gen_cmd[index])
@@ -87,7 +87,7 @@ async def on_reaction_add(reaction, user):
               elif react.emoji == right:
                   index += 1
               await client.delete_message(msg)
-      if reaction.emoji == '🇲':
+      if reaction.emoji == '🔨':
           index = 0
           while True:
               msg = await client.send_message(user, embed=mod_cmd[index])
@@ -142,37 +142,37 @@ async def on_message(message):
             r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
             embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
             embed.set_author(name='Potřebuješ pomoc?')
-            embed.add_field(name = 'React 🇲 ',value ='Ukáže ti příkazy pro Moderátory!.',inline = False)
-            embed.add_field(name = 'React 🇬 ',value ='Ukáže ti příkazy pro všechny.',inline = False)
+            embed.add_field(name = 'React 🔨 ',value ='Ukáže ti příkazy pro Moderátory!.',inline = False)
+            embed.add_field(name = 'React 🅰 ',value ='Ukáže ti příkazy pro všechny.',inline = False)
             dmmessage = await client.send_message(message.author, embed=embed)
-            reaction1 = '🇲'
-            reaction2 = '🇬'
+            reaction1 = '🔨'
+            reaction2 = '🅰'
       
             await client.add_reaction(dmmessage, reaction1)
             await client.add_reaction(dmmessage, reaction2)
 		
             await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
-        if message.content.upper() == ">ZKOUSKA":
+        #if message.content.upper() == ">ZKOUSKA":
         
     
-            author = message.author
-            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
-            embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
-            embed.set_author(name='Jak dobre znas majitele?')
-            embed.add_field(name = 'React 0⃣ ',value ='Pokud si myslíš že je majiteli 13.',inline = False)
-            embed.add_field(name = 'React 1⃣ ',value ='Pokud si myslíš že je majiteli 10',inline=False)
-            embed.add_field(name = 'React 2⃣', value = 'Pokud si myslíš že je majiteli 12',inline=False)
-            embed.add_field(name = 'React 3⃣', value = 'Pokid si myslíš že je majiteli 11',inline=False)
-            dmmessage = await client.send_message(message.author, embed=embed)
-            reaction1 = '0⃣'
-            reaction2 = '1⃣'
-            reaction3 = '2⃣'
-            reaction4 = '3⃣'
-            await client.add_reaction(dmmessage, reaction1)
-            await client.add_reaction(dmmessage, reaction2)
-            await client.add_reaction(dmmessage, reaction3)
-            await client.add_reaction(dmmessage, reaction4)
-            await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
+           # author = message.author
+         #   r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+            #embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+   #         embed.set_author(name='Jak dobre znas majitele?')
+ #           embed.add_field(name = 'React 0⃣ ',value ='Pokud si myslíš že je majiteli 13.',inline = False)
+        #    embed.add_field(name = 'React 1⃣ ',value ='Pokud si myslíš že je majiteli 10',inline=False)
+   #         embed.add_field(name = 'React 2⃣', value = 'Pokud si myslíš že je majiteli 12',inline=False)
+#            embed.add_field(name = 'React 3⃣', value = 'Pokid si myslíš že je majiteli 11',inline=False)
+#            dmmessage = await client.send_message(message.author, embed=embed)
+ #           reaction1 = '0⃣'
+         #   reaction2 = '1⃣'
+       #     reaction3 = '2⃣'
+            #reaction4 = '3⃣'
+        #    await client.add_reaction(dmmessage, reaction1)
+   #         await client.add_reaction(dmmessage, reaction2)
+#            await client.add_reaction(dmmessage, reaction3)
+   #         await client.add_reaction(dmmessage, reaction4)
+      #      await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
         if message.content.upper() == ">CAT":
             colour = '0x' + '008000'
             async with aiohttp.ClientSession() as session:
@@ -202,16 +202,16 @@ async def on_message(message):
                     embed.timestamp = datetime.datetime.utcnow()
                     await client.send_message(message.channel, embed=embed)
 	
-          # if message.content.upper() == ">DOG":
-           # colour = '0x' + '008000'
-          #  async with aiohttp.ClientSession() as session:
-           #     async with session.get("https://api.reddit.com/r/dog/random") as r:
-               #     data = await r.json()
-               #     embed = discord.Embed(title='Random Pejsek 🐕', description='z redditu', color=discord.Color(int(colour, base=16)))
-              #      embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
-              #      embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
-            #        embed.timestamp = datetime.datetime.utcnow()
-     #               await client.send_message(message.channel, embed=embed)
+        if message.content.upper() == ">DOG":
+           colour = '0x' + '008000'
+           async with aiohttp.ClientSession() as session:
+               async with session.get("https://api.reddit.com/r/dog/random") as r:
+                   data = await r.json()
+                   embed = discord.Embed(title='Random Pejsek 🐕', description='z redditu', color=discord.Color(int(colour, base=16)))
+                   embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
+                   embed.set_footer(text=f'Requested by: {message.author.display_name}', icon_url=f'{message.author.avatar_url}')
+                   embed.timestamp = datetime.datetime.utcnow()
+                   await client.send_message(message.channel, embed=embed)
 		
      
         if message.content.upper() == ">SERVER INFO":
