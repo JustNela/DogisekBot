@@ -184,7 +184,7 @@ async def on_message(message):
                     embed.timestamp = datetime.datetime.utcnow()
                     await client.send_message(message.channel, embed=embed)
         if message.content.upper() == "TEST":
-            embed = diecord.Embed(title="Pokud si dostal reakce na message", description="tak se tesy povedl!", color=0x0FF0F0)
+            embed = discord.Embed(title="Pokud si dostal reakce na message", description="tak se tesy povedl!", color=0x0FF0F0)
             rea1='📠'
             rea2='💾'
             rea3='🆕'
