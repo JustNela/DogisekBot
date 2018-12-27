@@ -192,6 +192,7 @@ async def on_message(message):
             await client.add_reaction(message, rea2)
             await client.add_reaction(message, rea3)
             await client.send_message(message.channel, embed=embed)
+	
 	if message.content.upper() == ">DOG":
             colour = '0x' + '008000'
             async with aiohttp.ClientSession() as session:
