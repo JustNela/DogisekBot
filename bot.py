@@ -28,13 +28,27 @@ left = '⏪'
 right = '⏩'
 
 general1=discord.Embed(title="Příkazy pro všechny!",description="``>cat`` +Ukáže ti random obrázek kočki! :D | ``>dog`` + Ukáže ti random obrázek psa! :D | ``>server info`` + Ukáže ti info o serveru! | ``>meme`` + Ukáže ti random meme! xD",color = 0x304FFE)
-general2=discord.Embed(title="Připravuje se",description="------------------",color=0x304FFE)
+general1.set_footer(text="Stránka 1")
+
+general2=discord.Embed(title="Připravuje se",description="``>zkouska`` +Dostanes zkousku z neceho. (Pouzit 1x za 7 dni.)",color=0x304FFE)
+general2.set_footer(text="Stránka 2")
+
 mod1=discord.Embed(title="Příkazy pro moderátory+!",description="``>warn`` +Varuje hráče! | ``>ban`` +Banuje uživatele! | ``>kick`` +Vyhodí uživatele!", color = 0xFF3D00)
+mod1.set_footer(text="Stránka 1")
+
 mod2=discord.Embed(title="Připravuje se!",description="--------------------",color=0xFF3D00)
+mod2.set_footer(text="Stránka 2")
+
+wrong1=diecord.Embed(title="Špatně!",description="Správná odpověď byla 3! (12)",color=0xF0F0F0)
+wrong2=diecord.Embed(title="Špatně!",description="Správná odpověď byla 3! (12)",color=0xF0F0F0)
+right3=diecord.Embed(title="Správně!",description="Majiteli je 12! (aspon tak píše v #ownerinfo xd)",color=0xF0F0F0)
+wrong4=diecord.Embed(title="Špatně!",description="Správná odpověď byla 3! (12)",color=0xF0F0F0)
 
 gen_cmd = (general1, general2)
   
 mod_cmd = (mod1, mod2)
+
+wrong = (worng1, wrong2, right3, wrong3, worng4)
 
 def predicate(message, l, r):
     def check(reaction, user):
@@ -89,7 +103,26 @@ async def on_reaction_add(reaction, user):
               elif react.emoji == right:
                   index += 1
               await client.delete_message(msg)
-
+  if reaction.message.server is None:
+      if reaction.emoji == '0⃣':
+          index = 0
+          while True:
+              msg = await client.send_message(user, embed=wrong1)
+      if reaction.emoji == '1⃣':
+          index = 0
+          while True:
+              msg = await client.send_message(user, embed=wrong2)
+	
+      if reaction.emoji == '2⃣':
+          index = 0
+          while True:
+              msg = await client.send_message(user, embed=right3)
+      if reaction.emoji == '3⃣':
+          index = 0
+          while True:
+              msg = await client.send_message(user, embed=wrong4)
+	
+              
 @client.event
 async def on_message(message):
          
@@ -117,8 +150,31 @@ async def on_message(message):
       
             await client.add_reaction(dmmessage, reaction1)
             await client.add_reaction(dmmessage, reaction2)
+		
             await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
-        if message.content.upper() == ">CAT":
+        if message.content.upper() == ">ZKOUSKA":
+        
+    
+            author = message.author
+            r, g, b = tuple(int(x * 255) for x in colorsys.hsv_to_rgb(random.random(), 1, 1))
+            embed = discord.Embed(color = discord.Color((r << 16) + (g << 8) + b))
+            embed.set_author(name='Jak dobre znas majitele?')
+            embed.add_field(name = 'React 0⃣ ',value ='Pokud si myslíš že je majiteli 13.',inline = False)
+            embed.add_field(name = 'React 1⃣ ',value ='Pokud si myslíš že je majiteli 10',inline=False)
+            embed.add_field(namr = 'React 2⃣', value = 'Pokud si myslíš že je majiteli 12',inline=False)
+            embed.add_field(name = 'React 3⃣', value = 'Pokid si myslíš že je majiteli 11',inline=False)
+            dmmessage = await client.send_message(message.author, embed=embed)
+            reaction1 = '0⃣'
+            reaction2 = '1⃣'
+            reaction3 = '2⃣'
+            reaction4 = '3⃣'
+            await client.add_reaction(dmmessage, reaction1)
+            await client.add_reaction(dmmessage, reaction2)
+            await client.add_reaction(dmmessage, reaction3)
+            await client.add_reaction(dmmessage, reaction4)
+            await client.send_message(message.channel, '📨 Podívej se do PM pro více informací {}'.format(message.author.mention))
+        
+	if message.content.upper() == ">CAT":
                 colour = '0x' + '008000'
                 async with aiohttp.ClientSession() as session:
                     async with session.get("https://api.reddit.com/r/cat/random") as r:
