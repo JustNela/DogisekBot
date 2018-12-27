@@ -192,7 +192,15 @@ async def on_message(message):
             await client.add_reaction(message, rea2)
             await client.add_reaction(message, rea3)
             await client.send_message(message.channel, embed=embed)
-		
+        if message.content.upper() == ">NSFW":
+           async with aiohttp.ClientSession() as session:
+                async with session.get("https://api.reddit.com/r/porn/random") as r:
+                    data = await r.json()
+                    embed = discord.Embed(title="NSFW!!", description="No nelíbí se ti to?", color=0xEC407A)
+                    embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
+                    embed.set_footer(text=f"Na žádost {message.author.display_name}", icon_url=f"{message.author.avatar_url}")
+                    embed.timestamp = datetime.datetime.utcnow()
+                    await client.send_message(message.channel, embed=embed)
 	
           # if message.content.upper() == ">DOG":
            # colour = '0x' + '008000'
