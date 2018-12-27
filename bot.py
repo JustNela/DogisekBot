@@ -185,7 +185,7 @@ async def on_message(message):
 @commands.has_permissions(manage_messages=True)
 async def warn(ctx):
 	
-     channel = discord.utils.get(client.get_all_channels(), name='warny-od-botu')
+     channel = discord.utils.get(client.get_all_channels(), name='dogisek-bot-logs')
     
      
      embed = discord.Embed(color = 0xB22222, title = "Člověk Varován")
@@ -195,5 +195,51 @@ async def warn(ctx):
      embed.add_field(name = "Důvod", value = "{0}".format(ctx.message), inline=False)
  
      await client.send_message(channel, embed=embed)
-     
+
+@client.command(pass_context=True)  
+@commands.has_permissions(kick_members=True)     
+async def kick(ctx,user:discord.Member):
+    channel = discord.utils.get(client.get_all_channels(), name='dogisek-bot-logs')
+    embed = discord.Embed(title = "Kick", color = 0xFF4500)
+    embed.add_field(name = "Moderator", value = "{0}".format(ctx.message.author), inline=False)
+    embed.add_field(name = "Hráč", value= "{0}".format(user), inline=False)
+    
+
+    if user.server_permissions.kick_members:
+        await client.say('**On/Ona je mod/admin a nemuzu ho/ji vyhodit!**')
+        return
+    
+    try:
+        await client.kick(user)
+        await client.send_message(channel, embed=embed)
+        await client.delete_message(ctx.message)
+
+    except discord.Forbidden:
+        await client.say('Permission denied.')
+        return
+    
+@client.command(pass_context=True)  
+@commands.has_permissions(ban_members=True)      
+async def ban(ctx,user:discord.Member):
+    channel = discord.utils.get(client.get_all_channels(), name='dogisek-bot-logs')
+    embed = discord.Embed(title = "Ban", color = 0xFF4500)
+    embed.add_field(name = "Moderator", value = "{0}".format(ctx.message.author), inline=False)
+    embed.add_field(name = "User", value = "{0}".format(user), inline=False)
+    
+    if user.server_permissions.ban_members:
+        await client.say('**On/ona je Mod/Admin a nemužu ji/ho zabanovat!!**')
+        return
+
+    try:
+        await client.ban(user)
+        await client.send_message(channel, embed=embed)
+
+    except discord.Forbidden:
+
+        await client.say('Permission denied.')
+        return
+    except discord.HTTPException:
+        await client.say('ban se nepovedl :(.')
+        return	
+    
 client.run(os.getenv("BOT"))
