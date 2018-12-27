@@ -27,10 +27,13 @@ client.remove_command('help')
 left = '⏪'
 right = '⏩'
 
-general1=discord.Embed(title="Příkazy pro všechny!",description="``>cat`` +Ukáže ti random obrázek kočki! :D | ``>dog`` + Ukáže ti random obrázek psa! :D | ``>server info`` + Ukáže ti info o serveru! | ``>meme`` + Ukáže ti random meme! xD",color = 0x304FFE)
+general1=discord.Embed(title="Příkazy pro všechny!",description="``>cat`` +Ukáže ti random obrázek kočki! :D",color = 0x304FFE)
 general1.set_footer(text="Stránka 1")
+general1.add_field(name=">dog",value = "Ukáže ti random pejska",inline=False)
+general1.add_field(name=">server info",value = "Ukáže ti info o serveru",inline=False)
+general1.add_field(name=">meme",value = "Ukáže tu random meme xD",inline=False)
 
-general2=discord.Embed(title="Připravuje se",description="``>zkouska`` +Dostanes zkousku z neceho. (Pouzit 1x za 7 dni.)",color=0x304FFE)
+general2=discord.Embed(title="Připravuje se",description="``>zkouska`` +Dostanes zkousku z neceho. (Pouzit 1x za 7 dni. **__PRIPRAVUJEME__**)",color=0x304FFE)
 general2.set_footer(text="Stránka 2")
 
 mod1=discord.Embed(title="Příkazy pro moderátory+!",description="``>warn`` +Varuje hráče! | ``>ban`` +Banuje uživatele! | ``>kick`` +Vyhodí uživatele!", color = 0xFF3D00)
