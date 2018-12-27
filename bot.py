@@ -194,7 +194,7 @@ async def on_message(message):
             await client.send_message(message.channel, embed=embed)
         if message.content.upper() == ">NSFW":
            async with aiohttp.ClientSession() as session:
-                async with session.get("https://api.hentaicloud.com/r/random") as r:
+                async with session.get("https://hentaicloud.com/r/random") as r:
                     data = await r.json()
                     embed = discord.Embed(title="NSFW!!", description="No nelíbí se ti to?", color=0xEC407A)
                     embed.set_image(url=data[0]["data"]["children"][0]["data"]["url"])
