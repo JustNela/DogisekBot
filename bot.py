@@ -48,7 +48,7 @@ gen_cmd = (general1, general2)
   
 mod_cmd = (mod1, mod2)
 
-wrong_answ = (worng1, wrong2, right3, wrong3, worng4)
+#wrong_answ = (worng1, wrong2, right3, wrong3, worng4)
 
 def predicate(message, l, r):
     def check(reaction, user):
