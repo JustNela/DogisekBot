@@ -256,7 +256,11 @@ async def on_message(message):
                   embed.timestamp = datetime.datetime.utcnow()
                   await client.send_message(message.channel, embed=embed)
 		
-       #if message.content.upper() == ">CAT":
+        if message.content.upper() == ">PREMIUM":
+            user = message.author
+            embed = discord.Embed(title = "Dogisek Bot Premium")
+            embed.add_field(name = "Připravujeme!",value="Připravuje Se!!",inline=False)
+            await client.send_message(user, embed=embed)
              
 @client.command(pass_context=True)
 @commands.has_permissions(manage_messages=True)
