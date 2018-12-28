@@ -269,7 +269,7 @@ async def warn(ctx):
      embed.add_field(name = "Člověk Varován", value = "{0}".format(userName), inline=False)
       
      embed.add_field(name = "Moderator", value = "{0}".format(ctx.message.author), inline=False)
-     embed.add_field(name = "Důvod", value = "{0}".format(ctx.message), inline=False)
+     embed.add_field(name = "Důvod", value = "{0}".format(message), inline=False)
  
      await client.send_message(channel, embed=embed)
 
